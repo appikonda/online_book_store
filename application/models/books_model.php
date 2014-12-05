@@ -3,9 +3,9 @@ class Books_model extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
-	
+
 	public function add() {
-		
+
 		$config = array(
 								'upload_path' => realpath(APPPATH.'../pictures'),
 								'allowed_types' => 'jpg|jpeg|png|bmp',
@@ -15,16 +15,16 @@ class Books_model extends CI_Model {
 		);
 		$this->load->library('upload', $config);
 		$field_name = 'display-pic';
-			
+
 		if($this->upload->do_upload($field_name)) {
 			// Successfully uploaded file to server
 			$file_info = $this->upload->data();
-				
+
 			$values = array(
 			$this->input->post('author'),
 			$this->input->post('title'),
 			$this->input->post('price'),
-			'http://localhost/obs/pictures/'.$file_info['file_name'],
+			'/obs/pictures/'.$file_info['file_name'],
 			$this->input->post('category'),
 			$this->input->post('isbn'),
 			$this->input->post('qty')
@@ -33,13 +33,13 @@ class Books_model extends CI_Model {
 			$query = "INSERT INTO books(author, title, price, display_pic, category, isbn, qty)
 										  VALUES(?,?,?,?,?,?,?)";
 			return $this->db->query($query, $values);
-				
+
 			} else {
 				// Failed
 				$this->upload->display_errors('<p class="error">', '</p>');
 			}
 	}
-	
+
 	function display_books() {
 		$query = "SELECT * FROM books";
 		$result_set = $this->db->query($query);
@@ -49,10 +49,10 @@ class Books_model extends CI_Model {
 			}
 			return $data;
 		}
-		
-		
+
+
 	}
-	
+
 	function display_book_info($id) {
 		$query = "SELECT * FROM books WHERE book_id=?";
 		$result_set = $this->db->query($query, $id);
@@ -62,10 +62,10 @@ class Books_model extends CI_Model {
 			}
 			return $data;
 		}
-	
-	
+
+
 	}
-	
+
 	function purchase($id) {
 		$query = "SELECT * FROM books WHERE book_id=?";
 		$result_set = $this->db->query($query, $id);
@@ -75,10 +75,10 @@ class Books_model extends CI_Model {
 			}
 			return $data;
 		}
-	
-	
+
+
 	}
-	
+
 	function delete_book($book_id) {
 		$query = "DELETE FROM books WHERE book_id=?";
 		return $this->db->query($query, $book_id);

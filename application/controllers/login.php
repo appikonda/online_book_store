@@ -9,27 +9,27 @@ $openid->required = array(
   'namePerson/first',
   'namePerson/last'
 );
-$openid->returnUrl = 'http://localhost/obs/login/set';
+$openid->returnUrl = '/obs/login/set';
 echo '<a class="command" href="'.$openid->authUrl().'">Login</a>';
-		
+
 	}
-	
-	
+
+
 	function logout() {
 		$this->session->sess_destroy();
 		redirect('http://www.google.com/accounts/Logout?continue=http://www.google.com/');
 	}
 
-	
+
 	function set() {
 		$this->load->helper('openid');
 		$openid = new LightOpenID('localhost');
-		
+
 		if ($openid->mode) {
 			if ($openid->mode == 'cancel') {
 				// User has canceled authentication
 			} elseif($openid->validate()) {
-				
+
 				if($this->input->get('openid_ext1_value_contact_email') == 'harishmunjuluri@gmail.com') {
 					$this->load->library('session');
 					$user_info= array(
@@ -42,16 +42,16 @@ echo '<a class="command" href="'.$openid->authUrl().'">Login</a>';
 				} else {
 					redirect('/display');
 				}
-				
+
 			} else {
 				// The user has not logged in via Google
 			}
 		} else {
 			// The user does not come from the link of the first page
-			
+
 		}
-		
+
 	}
-	
-	
+
+
 }

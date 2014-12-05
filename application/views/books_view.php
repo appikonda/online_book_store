@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="http://localhost/obs/style.css" />
+<link rel="stylesheet" type="text/css" href="/obs/style.css" />
 <!-- PAGE TITLE STARTS -->
 <title>Online Book Store</title>
 <!-- PAGE TITLE ENDS -->
@@ -10,7 +10,7 @@
 <body>
 <div id="container">
 <div id="header">
-<h1><a href="http://localhost/obs/" title="Online Book Store">Online Book Store</a></h1>
+<h1><a href="/obs/" title="Online Book Store">Online Book Store</a></h1>
 <!-- CONTENT TITLE START -->
 <h3>
 Add Book
@@ -20,17 +20,17 @@ Add Book
 <!-- START NAVIGATION -->
 <div id="top-nav">
 <span id="auth-box">
-<a class="command" href="http://localhost/obs/login/logout">Logout</a>
+<a class="command" href="/obs/login/logout">Logout</a>
 </span>
 <ul>
-<li><a href="http://localhost/obs/books/add">Add</a></li>
-<li><a href="http://localhost/obs/books/edit">Edit</a></li>
+<li><a href="/obs/books/add">Add</a></li>
+<li><a href="/obs/books/edit">Edit</a></li>
 </ul>
 </div>
 <!-- END OF NAVIGATION -->
 <!-- CONTENT GOES HERE -->
 <div id="content">
-<?php 
+<?php
 if(isset($msg))
 echo $msg;?>
 <form></form>
